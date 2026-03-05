@@ -117,8 +117,8 @@ export default function Navbar() {
             initial={{ y: -80 }}
             animate={{ y: 0 }}
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out ${isScrolled
-                    ? "bg-apd-dark/95 backdrop-blur-sm border-b border-apd-accent/30 py-3 shadow-lg shadow-black/10"
-                    : "bg-apd-dark py-4"
+                ? "bg-apd-dark/95 backdrop-blur-sm border-b border-apd-accent/30 py-3 shadow-lg shadow-black/10"
+                : "bg-apd-dark py-4"
                 }`}
         >
             <div className="container mx-auto px-6 flex justify-between items-center">

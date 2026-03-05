@@ -7,6 +7,7 @@ import ContactForm from "@/components/ContactForm"
 import Loader from "@/components/Loader"
 import Reveal from "@/components/Reveal"
 import TechStack from "@/components/TechStack"
+import CasesOfSuccess from "@/components/CasesOfSuccess";
 import ServicesSection from "@/components/ServicesSection" // ✅ AGREGAR
 
 export default function Home() {
@@ -28,7 +29,9 @@ export default function Home() {
       <Reveal>
         <Experience />
       </Reveal>
-
+      <Reveal>
+        <CasesOfSuccess />
+      </Reveal>
       <Reveal>
         <Methodology />
       </Reveal>

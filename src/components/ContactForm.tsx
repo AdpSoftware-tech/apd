@@ -36,38 +36,38 @@ export default function ContactForm() {
         }
     }
 
-    // Estilos para DARK MODE
-    const inputStyle = "w-full bg-transparent border-b border-white/20 py-3 text-white focus:border-apd-primary focus:outline-none transition-all placeholder:text-gray-600"
-    const labelStyle = "block text-lg font-semibold text-apd-light uppercase tracking-wider"
-    const requiredStyle = "text-xs font-normal text-gray-500 ml-1 lowercase"
+    // Estilos para inputs y labels adaptados a fondo claro
+    const inputStyle = "w-full bg-apd-bglogo border border-apd-light/40 rounded-lg py-3 px-4 text-apd-dark2 placeholder:text-apd-gray focus:border-apd-accent focus:ring-2 focus:ring-apd-accent/30 focus:outline-none transition-all shadow-sm"
+    const labelStyle = "block text-base font-semibold text-apd-dark2 mb-1"
+    const requiredStyle = "text-xs font-normal text-apd-gray ml-1 lowercase"
 
     return (
-        <section id="contacto" className="py-24 bg-apd-dark relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-apd-primary/5 blur-[100px] pointer-events-none"></div>
+        <section id="contacto" className="py-24 bg-apd-bglogo relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-apd-light/10 blur-[100px] pointer-events-none"></div>
 
             <div className="container mx-auto px-6 max-w-3xl relative z-10">
                 <div className="mb-16 text-center md:text-left">
-                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                        ¿Listo para <span className="text-apd-primary">empezar?</span>
+                    <h2 className="text-4xl md:text-5xl font-bold text-apd-dark mb-4">
+                        ¿Listo para <span className="text-apd-accent">empezar?</span>
                     </h2>
-                    <p className="text-gray-400 text-lg">
+                    <p className="text-apd-gray text-lg">
                         Cuéntanos sobre tu proyecto y diseñemos juntos una solución de alto impacto.
                     </p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-12">
+                <form onSubmit={handleSubmit} className="space-y-12 bg-white/80 rounded-2xl shadow-[0_0_40px_4px_rgba(6,89,155,0.18)] p-8 border border-apd-light/30 backdrop-blur-md">
                     <div className="space-y-6">
                         <label className={labelStyle}>Nombre Completo</label>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                             <div>
                                 <input name="name" required className={inputStyle} id="name" placeholder="Ej. Juan" />
-                                <label htmlFor="name" className="text-xs text-gray-500 mt-2 block uppercase tracking-tighter">
+                                <label htmlFor="name" className="text-xs text-apd-gray mt-2 block uppercase tracking-tighter">
                                     Nombre <span className={requiredStyle}>(obligatorio)</span>
                                 </label>
                             </div>
                             <div>
                                 <input name="lastname" required className={inputStyle} id="lastname" placeholder="Ej. Pérez" />
-                                <label htmlFor="lastname" className="text-xs text-gray-500 mt-2 block uppercase tracking-tighter">
+                                <label htmlFor="lastname" className="text-xs text-apd-gray mt-2 block uppercase tracking-tighter">
                                     Apellido <span className={requiredStyle}>(obligatorio)</span>
                                 </label>
                             </div>
@@ -107,7 +107,7 @@ export default function ContactForm() {
                         <button
                             type="submit"
                             disabled={status === "loading"}
-                            className="group relative bg-apd-primary hover:bg-apd-light text-white font-bold px-16 py-4 rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] disabled:opacity-50"
+                            className="group relative bg-apd-accent hover:bg-apd-dark2 text-apd-bglogo font-bold px-16 py-4 rounded-xl transition-all duration-300 shadow-xl hover:shadow-[0_0_40px_4px_rgba(6,89,155,0.18)] disabled:opacity-50"
                         >
                             <span className="flex items-center gap-2">
                                 {status === "loading" ? "Procesando..." : "Enviar Solicitud"}
@@ -119,12 +119,12 @@ export default function ContactForm() {
 
                 <div className="mt-8 h-8">
                     {status === "success" && (
-                        <p className="text-green-400 font-medium flex items-center gap-2 animate-fade-in">
+                        <p className="text-green-500 font-medium flex items-center gap-2 animate-fade-in">
                             ✓ ¡Mensaje enviado! Nos contactaremos pronto con usted.
                         </p>
                     )}
                     {status === "error" && (
-                        <p className="text-red-400 font-medium animate-shake">
+                        <p className="text-red-500 font-medium animate-shake">
                             ✕ Hubo un error. Por favor, escriba a info@apd.solutions directamente.
                         </p>
                     )}

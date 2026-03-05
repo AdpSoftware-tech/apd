@@ -1,12 +1,13 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { FiLinkedin, FiInstagram, FiGithub, FiMail, FiMapPin } from "react-icons/fi"
+import { FiLinkedin, FiInstagram, FiMail, FiMapPin } from "react-icons/fi"
 import { useLocale } from "../context/LocaleContext"
 
 export default function Footer() {
     const { t } = useLocale()
-    const currentYear = new Date().getFullYear()
+    // const currentYear = new Date().getFullYear()
+    const currentYear = 2023
 
     const socialLinks = [
         {
@@ -19,19 +20,13 @@ export default function Footer() {
             href: "https://www.instagram.com/a.p.d.software_solutions/",
             label: "Instagram"
         },
-        {
-            icon: <FiGithub />,
-            href: "https://github.com/AdpSoftware-tech",
-            label: "GitHub"
-        },
     ]
 
     const quickLinks = [
         { name: t('nav.home'), href: "#hero" },
-        { name: t('nav.home'), href: "#nosotros" },
         { name: t('nav.experience'), href: "#experiencia" },
-        { name: t('nav.services'), href: "#metodologia" },
-        { name: t('nav.services'), href: "#tecnologias" },
+        { name: t('nav.services'), href: "/servicios" },
+        { name: t('nav.contact'), href: "#contacto" },
     ]
 
     return (
@@ -72,7 +67,7 @@ export default function Footer() {
                         <ul className="space-y-4">
                             {quickLinks.map((link) => (
                                 <li key={link.href}>
-                                    <a href={link.href} className="text-apd-dark/70 hover:text-apd-primary transition-colors duration-300">
+                                    <a href={link.href} className="text-apd-dark/70 hover:text-apd-accent focus:text-apd-accent focus:outline-none transition-colors duration-300">
                                         {link.name}
                                     </a>
                                 </li>
@@ -113,7 +108,7 @@ export default function Footer() {
                             </li>
                             <li className="flex items-center gap-3 text-apd-dark/70">
                                 <FiMapPin className="text-apd-primary" />
-                                <span>San José, Costa Rica</span>
+                                <span>Alajuela, Costa Rica</span>
                             </li>
                         </ul>
                     </div>

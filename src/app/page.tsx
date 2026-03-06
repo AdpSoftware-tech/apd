@@ -1,6 +1,5 @@
 import Hero from "@/components/Hero"
 import About from "@/components/About"
-import Experience from "@/components/Experience"
 import Methodology from "@/components/Methodology"
 import StatsSection from "@/components/StatsSection"
 import ContactForm from "@/components/ContactForm"
@@ -26,9 +25,6 @@ export default function Home() {
         <About />
       </Reveal>
 
-      <Reveal>
-        <Experience />
-      </Reveal>
       <Reveal>
         <CasesOfSuccess />
       </Reveal>

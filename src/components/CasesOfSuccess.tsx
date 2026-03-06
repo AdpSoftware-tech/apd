@@ -1,6 +1,7 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const cases = [
     {
@@ -10,7 +11,7 @@ const cases = [
         value: "Rapidez operativa y seguridad total en la toma de decisiones basadas en datos precisos.",
         image: "https://img.utdstc.com/screen/cd7/cc3/cd7cc3b90e1480dd6111c9f1dbc04d8297c21b9d8eb23fcfe55765858a3a2709:600",
         status: "Completado" as const,
-        tech: ["Next.js", "TypeScript", "UI/UX"],
+        tech: ["Flutter", "iOS", "Android"],
     },
     {
         title: "ADAdmin: Control Total de la Gestión Administrativa",
@@ -44,7 +45,7 @@ const cases = [
         challenge: "La administración manual de citas, inventario y clientes generaba confusión, sobrecarga de trabajo y pérdida de oportunidades de venta en el salón.",
         solution: "Desarrollamos una plataforma digital personalizada que permite agendar citas en línea, gestionar el inventario de productos y llevar un historial detallado de cada cliente. El sistema incluye recordatorios automáticos y reportes de ventas en tiempo real.",
         value: "Reducción del ausentismo, mayor satisfacción de los clientes y optimización de los recursos del salón, permitiendo un crecimiento sostenido del negocio.",
-        image: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=80", // Imagen de ejemplo de estética
+        image: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=80",
         status: "Completado" as const,
         tech: ["Next.js", "Firebase", "Tailwind"],
     },
@@ -54,64 +55,105 @@ type StatusType = typeof cases[number]["status"];
 
 const statusColors: Record<StatusType, string> = {
     "Completado": "bg-green-100 text-green-700 border-green-300",
-    "En desarrollo": "bg-yellow-100 text-yellow-800 border-yellow-300",
-}
+    "En desarrollo": "bg-yellow-400 text-[#02233B] border-yellow-600 shadow-md",
+};
 
 export default function CasesOfSuccess() {
+    const [current, setCurrent] = useState(0);
+    const total = cases.length;
+
+    const goTo = (idx: number) => setCurrent((idx + total) % total);
+    const next = () => goTo(current + 1);
+    const prev = () => goTo(current - 1);
+
+    // Color de fondo dinámico según status
+    const bgGradient = cases[current].status === "En desarrollo"
+        ? "bg-gradient-to-br from-yellow-50 via-white to-white"
+        : "bg-gradient-to-br from-white via-apd-bglogo to-apd-light/30";
+
     return (
-        <section id="casos-exito" className="py-20 bg-apd-bglogo">
-            <div className="container mx-auto px-4">
-                <h2 className="text-4xl font-bold text-center text-apd-dark mb-12">
+        <section id="casos-exito" className="py-12 md:py-20 bg-apd-bglogo">
+            <div className="container mx-auto px-2 md:px-4 max-w-2xl flex flex-col items-center">
+                <h2 className="text-4xl md:text-5xl font-serif italic font-bold text-center mb-8 md:mb-12 text-[#02233B]">
                     Casos de Éxito: Soluciones en Acción
                 </h2>
-                <p className="text-xl text-center mb-16 max-w-3xl mx-auto text-apd-gray">
+                <p className="text-lg md:text-xl text-center mb-6 md:mb-10 max-w-3xl mx-auto text-apd-dark font-sans">
                     Cada proyecto es una prueba de que la tecnología adaptada transforma cualquier sector.
                 </p>
-                <div className="grid gap-12 md:grid-cols-2">
-                    {cases.map((item, idx) => (
+                <div className="relative w-full">
+                    <AnimatePresence mode="wait">
                         <motion.div
-                            key={idx}
-                            initial={{ opacity: 0, y: 40 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.7, delay: idx * 0.1 }}
-                            className="bg-white rounded-2xl shadow-xl border border-apd-light flex flex-col h-full hover:shadow-2xl transition-shadow duration-300"
+                            key={current}
+                            initial={{ opacity: 0, scale: 0.96, y: 40 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.96, y: -40 }}
+                            transition={{ duration: 0.5, type: "spring", bounce: 0.18 }}
+                            className={`rounded-2xl border border-apd-light flex flex-col h-full p-4 md:p-8 shadow-xl hover:shadow-2xl transition-all duration-300 ${bgGradient}`}
                         >
-                            {/* Imagen eliminada para un diseño más limpio */}
-                            <div className="flex-1 flex flex-col p-6">
-                                <div className="flex items-center justify-between mb-4">
-                                    <h3 className="text-2xl font-bold text-apd-dark2 leading-tight">
-                                        {item.title}
-                                    </h3>
-                                    <span className={`px-4 py-1 rounded-full text-xs font-semibold border ${statusColors[item.status]}`}>{item.status}</span>
-                                </div>
-                                <div className="mb-3">
-                                    <strong className="block text-apd-accent mb-1">El Desafío:</strong>
-                                    <p className="text-apd-dark text-base mb-2">{item.challenge}</p>
-                                </div>
-                                <div className="mb-3">
-                                    <strong className="block text-apd-accent mb-1">La Solución (DCS):</strong>
-                                    <p className="text-apd-dark text-base mb-2">{item.solution}</p>
-                                </div>
-                                <div className="mb-4">
-                                    <strong className="block text-apd-accent mb-1">El Valor:</strong>
-                                    <p className="text-apd-dark text-base">{item.value}</p>
-                                </div>
-                                <div className="flex flex-wrap gap-2 mt-auto">
-                                    {item.tech && item.tech.map((tech, i) => (
-                                        <span
-                                            key={i}
-                                            className="px-3 py-1 rounded-full bg-apd-light text-apd-accent text-xs font-semibold border border-apd-accent/20 shadow-sm"
-                                        >
-                                            {tech}
-                                        </span>
-                                    ))}
-                                </div>
+                            <div className="flex items-center justify-between mb-4">
+                                <h3 className="text-xl md:text-3xl font-extrabold leading-tight font-sans text-[#02233B]">
+                                    {cases[current].title}
+                                </h3>
+                                <span className={`px-4 py-1 rounded-full text-xs font-semibold border ${statusColors[cases[current].status]}`}>{cases[current].status}</span>
+                            </div>
+                            <div className="mb-3">
+                                <strong className="block text-[#748A91] italic mb-1">El Desafío:</strong>
+                                <p className="text-apd-dark text-base md:text-lg mb-2 font-sans">{cases[current].challenge}</p>
+                            </div>
+                            <div className="mb-3">
+                                <strong className="block text-[#748A91] italic mb-1">La Solución (DCS):</strong>
+                                <p className="text-apd-dark text-base md:text-lg mb-2 font-sans">{cases[current].solution}</p>
+                            </div>
+                            <div className="mb-4">
+                                <strong className="block text-[#748A91] italic mb-1">El Valor:</strong>
+                                <p className="text-apd-dark text-base md:text-lg font-sans">{cases[current].value}</p>
+                            </div>
+                            <div className="flex flex-wrap gap-2 mt-auto">
+                                {cases[current].tech && cases[current].tech.map((tech, i) => (
+                                    <span
+                                        key={i}
+                                        className="px-3 py-1 rounded-full bg-apd-light text-apd-accent text-xs font-semibold border border-apd-accent/20 shadow-sm font-sans"
+                                    >
+                                        {tech}
+                                    </span>
+                                ))}
                             </div>
                         </motion.div>
+                    </AnimatePresence>
+                    {/* Flechas navegación - responsivas y con animación */}
+                    <button
+                        aria-label="Anterior"
+                        onClick={prev}
+                        className="absolute left-[-56px] top-1/2 -translate-y-1/2 bg-white border border-apd-light rounded-full w-12 h-12 md:w-10 md:h-10 flex items-center justify-center shadow hover:bg-apd-accent/20 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-apd-accent"
+                    >
+                        <span className="sr-only">Anterior</span>
+                        <svg width="22" height="22" fill="none" stroke="#153656" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" /></svg>
+                    </button>
+                    <button
+                        aria-label="Siguiente"
+                        onClick={next}
+                        className="absolute right-[-56px] top-1/2 -translate-y-1/2 bg-white border border-apd-light rounded-full w-12 h-12 md:w-10 md:h-10 flex items-center justify-center shadow hover:bg-apd-accent/20 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-apd-accent"
+                    >
+                        <span className="sr-only">Siguiente</span>
+                        <svg width="22" height="22" fill="none" stroke="#153656" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg>
+                    </button>
+                </div>
+                {/* Indicadores */}
+                <div className="flex gap-2 mt-8">
+                    {cases.map((_, idx) => (
+                        <button
+                            key={idx}
+                            onClick={() => goTo(idx)}
+                            className={`w-3 h-3 md:w-3 md:h-3 rounded-full border border-apd-accent transition-all duration-200 ${current === idx ? "bg-apd-accent scale-125" : "bg-apd-light"}`}
+                            aria-label={`Ir al caso ${idx + 1}`}
+                        />
                     ))}
+                </div>
+                {/* Progreso visual */}
+                <div className="mt-4 text-apd-gray text-xs md:text-sm">
+                    Caso {current + 1} de {total}
                 </div>
             </div>
         </section>
-    )
+    );
 }

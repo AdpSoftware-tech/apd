@@ -27,29 +27,27 @@ export default function About() {
     return (
         <section id="nosotros" className="py-24 bg-apd-dark relative overflow-hidden">
             {/* Decoración de fondo sutil */}
-            <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-apd-primary/5 blur-[120px] rounded-full pointer-events-none"></div>
-
+            <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-[#7FA0BD]/20 blur-[120px] rounded-full pointer-events-none"></div>
             <div className="container mx-auto px-6 relative z-10">
                 <div className="max-w-4xl mx-auto text-center mb-20">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-4xl md:text-5xl font-bold text-white mb-8"
+                        className="text-4xl md:text-5xl font-bold text-[#02233B] mb-8 drop-shadow-2xl"
                     >
-                        Nuestra Propuesta de <span className="text-apd-primary">Valor</span>
+                        Nuestra Propuesta de <span className="text-[#7FA0BD] drop-shadow">Valor</span>
                     </motion.h2>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
                         viewport={{ once: true }}
-                        className="text-lg md:text-xl text-gray-400 leading-relaxed"
+                        className="text-lg md:text-xl text-[#02233B] leading-relaxed drop-shadow"
                     >
-                        En <span className="text-white font-semibold">A.P.D. Solutions</span>, nos especializamos en transformar desafíos operativos en ventajas competitivas. Aplicamos nuestra <span className="text-apd-primary font-medium">Metodología DCS</span> para asegurar que cada solución aporte un valor real, medible y escalable.
+                        En <span className="text-[#7FA0BD] font-bold">A.P.D. Solutions</span>, nos especializamos en transformar desafíos operativos en ventajas competitivas. Aplicamos nuestra <span className="text-[#597176] font-bold">Metodología DCS</span> para asegurar que cada solución aporte un valor real, medible y escalable.
                     </motion.p>
                 </div>
-
                 <div className="grid md:grid-cols-3 gap-8">
                     {pillars.map((pillar, idx) => (
                         <motion.div
@@ -58,22 +56,20 @@ export default function About() {
                             whileInView={{ opacity: 1, scale: 1 }}
                             transition={{ delay: idx * 0.1 }}
                             viewport={{ once: true }}
-                            className="relative group p-10 bg-white/[0.02] border border-white/10 rounded-3xl hover:border-apd-primary/40 hover:bg-white/[0.04] transition-all duration-500"
+                            className="relative group p-10 bg-apd-dark/90 border-2 border-[#7FA0BD] rounded-3xl hover:border-[#597176] hover:bg-[#7FA0BD]/10 transition-all duration-500 shadow-2xl"
                         >
                             {/* Icono Flotante */}
-                            <div className="text-4xl mb-6 inline-block p-4 bg-white/5 rounded-2xl group-hover:scale-110 transition-transform duration-500">
+                            <div className="text-5xl mb-6 inline-block p-5 bg-[#7FA0BD]/20 border-2 border-[#7FA0BD] rounded-2xl group-hover:scale-110 group-hover:bg-[#597176]/30 transition-transform duration-500 shadow-lg">
                                 {pillar.icon}
                             </div>
-
-                            <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-apd-primary transition-colors">
+                            <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-[#7FA0BD] transition-colors drop-shadow-lg">
                                 {pillar.title}
                             </h3>
-                            <p className="text-gray-400 leading-relaxed">
+                            <p className="text-white leading-relaxed font-medium drop-shadow group-hover:text-[#02233B] group-focus:text-[#02233B] transition-colors duration-300">
                                 {pillar.desc}
                             </p>
-
                             {/* Brillo en la esquina al hacer hover */}
-                            <div className="absolute top-0 right-0 w-20 h-20 bg-apd-primary/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                            <div className="absolute top-0 right-0 w-20 h-20 bg-[#7FA0BD]/40 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
                         </motion.div>
                     ))}
                 </div>

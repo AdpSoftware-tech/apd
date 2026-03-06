@@ -20,7 +20,6 @@ export default function Navbar() {
     const links = useMemo(
         () => [
             { href: "/", labelKey: "nav.home" },
-            { href: "/#experiencia", labelKey: "nav.experience" },
             { href: "/servicios", labelKey: "nav.services" },
             { href: "/#contacto", labelKey: "nav.contact" },
         ],

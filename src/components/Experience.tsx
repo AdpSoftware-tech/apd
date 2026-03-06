@@ -27,33 +27,33 @@ export default function Experience() {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: idx * 0.1 }}
                             viewport={{ once: true }}
-                            className="group relative bg-white/[0.03] border border-white/10 p-8 rounded-3xl hover:border-apd-primary/50 transition-all duration-500"
+                            className="group relative bg-white/5 border border-apd-light/30 p-8 rounded-3xl hover:shadow-2xl hover:scale-[1.025] hover:border-apd-accent/60 transition-all duration-400"
                         >
                             <div className="flex justify-between items-start mb-6">
-                                <div className="p-3 bg-apd-primary/10 rounded-2xl group-hover:bg-apd-primary/20 transition-colors">
-                                    <h3 className="text-2xl font-bold text-white group-hover:text-apd-primary transition-colors">
+                                <div className="p-3 bg-apd-accent/10 rounded-2xl group-hover:bg-apd-accent/20 transition-colors">
+                                    <h3 className="text-2xl font-bold text-apd-dark group-hover:text-apd-accent transition-colors">
                                         {project.title}
                                     </h3>
                                 </div>
                                 {project.status && (
-                                    <span className={`text-[10px] font-bold ${project.status === 'En desarrollo' || project.status === 'In progress' ? 'bg-yellow-500/10 text-yellow-500 border border-yellow-500/20' : 'bg-green-500/10 text-green-400 border border-green-500/20'} px-3 py-1 rounded-full uppercase tracking-tighter`}>
+                                    <span className={`text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-tighter border ${project.status === 'En desarrollo' || project.status === 'In progress' ? 'bg-yellow-100 text-yellow-700 border-yellow-300' : 'bg-green-100 text-green-700 border-green-300'}`}>
                                         {project.status}
                                     </span>
                                 )}
                             </div>
 
-                            <p className="text-gray-400 mb-8 leading-relaxed">{project.desc}</p>
+                            <p className="text-apd-dark mb-8 leading-relaxed font-sans text-base md:text-lg">{project.desc}</p>
 
                             <div className="flex flex-wrap gap-2">
                                 {project.tech.map((t: string) => (
-                                    <span key={t} className="text-[10px] bg-white/5 text-gray-300 px-3 py-1 rounded-lg border border-white/5 uppercase font-medium">
+                                    <span key={t} className="text-[11px] bg-apd-light/30 text-apd-accent px-3 py-1 rounded-full border border-apd-accent/20 font-semibold shadow-sm uppercase font-sans">
                                         {t}
                                     </span>
                                 ))}
                             </div>
 
                             {/* Decoración sutil al hacer hover */}
-                            <div className="absolute bottom-0 left-0 w-0 h-1 bg-apd-primary group-hover:w-full transition-all duration-500 rounded-b-3xl"></div>
+                            <div className="absolute bottom-0 left-0 w-0 h-1 bg-apd-accent group-hover:w-full transition-all duration-500 rounded-b-3xl"></div>
                         </motion.div>
                     ))}
                 </div>

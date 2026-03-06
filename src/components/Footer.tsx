@@ -24,7 +24,6 @@ export default function Footer() {
 
     const quickLinks = [
         { name: t('nav.home'), href: "#hero" },
-        { name: t('nav.experience'), href: "#experiencia" },
         { name: t('nav.services'), href: "/servicios" },
         { name: t('nav.contact'), href: "#contacto" },
     ]

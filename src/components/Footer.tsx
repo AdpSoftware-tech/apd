@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { FiLinkedin, FiInstagram, FiMail, FiMapPin } from "react-icons/fi"
 import { useLocale } from "../context/LocaleContext"
+import Link from "next/link"
 
 export default function Footer() {
     const { t } = useLocale()
@@ -119,8 +120,10 @@ export default function Footer() {
                         © {currentYear} A.P.D. SOLUTIONS. {t('footer.copyrightSuffix')}
                     </p>
                     <div className="flex gap-6">
-                        <a href="/terms" className="hover:text-apd-primary transition-colors">{t('footer.terms')}</a>
-                        <a href="/privacy" className="hover:text-apd-primary transition-colors">{t('footer.privacy')}</a>
+                        {/* <a href="/terms" className="hover:text-apd-primary transition-colors">{t('footer.terms')}</a> */}
+                        <Link href="/privacy" className="hover:text-apd-primary transition-colors">
+                            {t('footer.privacy')}
+                        </Link>
                     </div>
                 </div>
             </div>

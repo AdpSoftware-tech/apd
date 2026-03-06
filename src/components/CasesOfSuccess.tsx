@@ -90,11 +90,11 @@ export default function CasesOfSuccess() {
                             transition={{ duration: 0.5, type: "spring", bounce: 0.18 }}
                             className={`rounded-2xl border border-apd-light flex flex-col h-full p-4 md:p-8 shadow-xl hover:shadow-2xl transition-all duration-300 ${bgGradient}`}
                         >
-                            <div className="flex items-center justify-between mb-4">
+                            <div className="flex items-center justify-between mb-4 flex-nowrap">
                                 <h3 className="text-xl md:text-3xl font-extrabold leading-tight font-sans text-[#02233B]">
                                     {cases[current].title}
                                 </h3>
-                                <span className={`px-4 py-1 rounded-full text-xs font-semibold border ${statusColors[cases[current].status]}`}>{cases[current].status}</span>
+                                <span className={`px-4 py-1 rounded-full text-xs font-semibold border ${statusColors[cases[current].status]} whitespace-nowrap ml-2`}>{cases[current].status}</span>
                             </div>
                             <div className="mb-3">
                                 <strong className="block text-[#748A91] italic mb-1">El Desafío:</strong>

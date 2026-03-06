@@ -17,7 +17,7 @@ const MESSAGES: Record<Locale, Record<string, any>> = {
       badge: "Ingeniería de Software & QA",
       titlePrefix: "A.P.D.",
       titleSuffix: "Solutions",
-      subtitle: "Soluciones de software a medida y QA que priorizan estabilidad y crecimiento. Entregamos resultados claros y medibles.",
+      subtitle: "Soluciones integrales para PYMES, medianas y grandes empresas. Desde el soporte técnico hasta la transformación digital y consultoría especializada.",
       ctaPrimary: "Agendar Consultoría",
       ctaSecondary: "Ver Servicios",
       chips: ["Fullstack", "Mobile", "QA"],
@@ -76,51 +76,51 @@ const MESSAGES: Record<Locale, Record<string, any>> = {
       badge: "Software Engineering & QA",
       titlePrefix: "A.P.D.",
       titleSuffix: "Solutions",
-      subtitle: "Custom software and QA that prioritize reliability and growth. We deliver clear, measurable results.",
-      ctaPrimary: "Schedule Consultation",
-      ctaSecondary: "View Services",
+      subtitle: "Soluciones integrales para PYMES, medianas y grandes empresas. Desde el soporte técnico hasta la transformación digital y consultoría especializada.",
+      ctaPrimary: "Agendar Consultoría",
+      ctaSecondary: "Ver Servicios",
       chips: ["Fullstack", "Mobile", "QA"],
-      since: "Since 2018",
-      clients: "Projects delivered to SaaS and B2B companies",
+      since: "Desde 2018",
+      clients: "Proyectos entregados a empresas SaaS y B2B",
     },
     experience: {
-      title: "Case Studies",
+      title: "Casos de Éxito",
       eyebrow: "Portfolio",
-      subtitle: "Custom solutions that have transformed our clients' operations.",
+      subtitle: "Soluciones personalizadas que han transformado la operativa de nuestros clientes.",
       projects: [
         {
           title: "Pedx Calc",
-          desc: "High-precision software for pediatric medical calculations.",
+          desc: "Software de alta precisión para cálculos médicos pediátricos.",
           tech: ["Next.js", "TypeScript", "UI/UX"],
-          status: "Completed"
+          status: "Completado"
         },
         {
           title: "ADAdmin",
-          desc: "Centralized system for administrative and operational business management.",
+          desc: "Sistema centralizado para la gestión administrativa y operativa empresarial.",
           tech: ["React", "PostgreSQL", "Node.js"],
-          status: "Completed"
+          status: "Completado"
         },
         {
           title: "Iglesias Integradas",
-          desc: "Integrated digital ecosystem for community and membership management.",
+          desc: "Ecosistema digital integrado para la gestión de comunidades y membresías.",
           tech: ["Flutter", "Firebase", "Web"],
-          status: "Completed"
+          status: "Completado"
         },
         {
           title: "POS Heladerías",
-          desc: "Point of sale optimized for fast flows and real-time shift control.",
+          desc: "Punto de venta optimizado para flujos rápidos y control de turnos en tiempo real.",
           tech: ["Next.js", "PostgreSQL", "Tailwind"],
-          status: "In progress"
+          status: "En desarrollo"
         }
       ]
     },
     footer: {
-      navigationTitle: "Navigation",
-      specialtiesTitle: "Specialties",
-      contactTitle: "Direct Contact",
-      terms: "Terms of Service",
-      privacy: "Privacy Policy",
-      copyrightSuffix: "ALL RIGHTS RESERVED.",
+      navigationTitle: "Navegación",
+      specialtiesTitle: "Especialidades",
+      contactTitle: "Contacto Directo",
+      terms: "Términos de Servicio",
+      privacy: "Política de Privacidad",
+      copyrightSuffix: "TODOS LOS DERECHOS RESERVADOS.",
     },
   },
 }

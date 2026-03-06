@@ -5,7 +5,10 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { LocaleProvider } from "../context/LocaleContext";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+})
 
 export const metadata: Metadata = {
   // Lo que sale en la pestaña del navegador

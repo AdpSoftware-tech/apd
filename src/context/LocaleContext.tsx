@@ -16,7 +16,7 @@ const MESSAGES: Record<Locale, Record<string, any>> = {
     hero: {
       badge: "Ingeniería de Software & QA",
       titlePrefix: "A.P.D.",
-      titleSuffix: "Solutions",
+      titleSuffix: " Software Solutions",
       subtitle: "Soluciones integrales para PYMES, medianas y grandes empresas. Desde el soporte técnico hasta la transformación digital y consultoría especializada.",
       ctaPrimary: "Agendar Consultoría",
       ctaSecondary: "Ver Servicios",
@@ -75,7 +75,7 @@ const MESSAGES: Record<Locale, Record<string, any>> = {
     hero: {
       badge: "Software Engineering & QA",
       titlePrefix: "A.P.D.",
-      titleSuffix: "Solutions",
+      titleSuffix: "Software Solutions",
       subtitle: "Soluciones integrales para PYMES, medianas y grandes empresas. Desde el soporte técnico hasta la transformación digital y consultoría especializada.",
       ctaPrimary: "Agendar Consultoría",
       ctaSecondary: "Ver Servicios",

@@ -39,7 +39,7 @@ export default function Footer() {
                     {/* Columna 1: Branding y Propósito */}
                     <div className="col-span-1 lg:col-span-1">
                         <h4 className="text-2xl font-bold text-apd-dark mb-6">
-                            A.P.D. <span className="text-apd-primary">Solutions</span>
+                            A.P.D. <span className="text-apd-primary">Software Solutions</span>
                         </h4>
                         <p className="text-apd-dark/70 leading-relaxed mb-8">
                             {t('hero.subtitle')}
@@ -117,7 +117,7 @@ export default function Footer() {
                 {/* Línea final de Copyright */}
                 <div className="pt-8 border-t border-apd-dark/10 flex flex-col md:flex-row justify-between items-center gap-4 text-apd-dark/50 text-xs tracking-widest">
                     <p>
-                        © {currentYear} A.P.D. SOLUTIONS. {t('footer.copyrightSuffix')}
+                        © {currentYear} A.P.D. SOFTWARE SOLUTIONS. {t('footer.copyrightSuffix')}
                     </p>
                     <div className="flex gap-6">
                         {/* <a href="/terms" className="hover:text-apd-primary transition-colors">{t('footer.terms')}</a> */}

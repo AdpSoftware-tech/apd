@@ -104,7 +104,7 @@ export default function Navbar() {
                     <div className="w-9 h-9 rounded-full overflow-hidden border border-white/20">
                         <Image
                             src="/apd.png"
-                            alt="A.P.D. Solutions"
+                            alt="A.P.D. Software Solutions"
                             width={36}
                             height={36}
                             className="object-cover"
@@ -112,7 +112,7 @@ export default function Navbar() {
                         />
                     </div>
                     <span className="text-lg md:text-xl font-bold tracking-tight text-apd-bglogo">
-                        A.P.D. Solutions
+                        A.P.D. Software Solutions
                     </span>
                 </Link>
 

@@ -23,7 +23,7 @@ export async function POST(request: Request) {
 
         const mailOptions = {
             from: `"Web Contact" <${process.env.EMAIL_USER}>`,
-            to: 'adonisaleman60@gmail.com', // Correo destino
+            to: 'apdsolutions5@gmail.com', // Correo destino
             replyTo: email,
             subject: `🚀 Nuevo Proyecto: ${subject}`,
             html: `

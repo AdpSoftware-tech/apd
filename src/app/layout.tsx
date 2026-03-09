@@ -12,9 +12,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "A.P.D. Solutions | Ingeniería de Software & QA",
+  title: "A.P.D. Solutions | Desarrollo de Software y QA Automation en Costa Rica",
   description:
-    "Transformamos desafíos operativos en soluciones digitales de alto impacto. Especialistas en Desarrollo Fullstack, Mobile con Flutter y QA Automation en Costa Rica.",
+    "Empresa de desarrollo de software en Costa Rica especializada en desafíos operativos en soluciones digitales de alto impacto. Especialistas en Desarrollo Fullstack, Mobile con Flutter y QA Automation en Costa Rica.",
   keywords: [
     "Desarrollo de Software",
     "QA Automation",

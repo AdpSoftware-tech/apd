@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script"; // 👈 IMPORTANTE
 import "./globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -14,7 +15,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "A.P.D. Solutions | Desarrollo de Software y QA Automation en Costa Rica",
   description:
-    "Empresa de desarrollo de software en Costa Rica especializada en desafíos operativos en soluciones digitales de alto impacto. Especialistas en Desarrollo Fullstack, Mobile con Flutter y QA Automation en Costa Rica.",
+    "Empresa de desarrollo de software en Costa Rica especializada en soluciones digitales de alto impacto. Expertos en Desarrollo Fullstack, Mobile con Flutter y QA Automation.",
   keywords: [
     "Desarrollo de Software",
     "QA Automation",
@@ -81,6 +82,22 @@ export default function RootLayout({
         <noscript className="block text-center text-sm text-gray-400">
           Este sitio funciona mejor con JavaScript activado.
         </noscript>
+
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-9VKCPR9C3P"
+          strategy="afterInteractive"
+        />
+
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-9VKCPR9C3P');
+          `}
+        </Script>
+
       </body>
     </html>
   );

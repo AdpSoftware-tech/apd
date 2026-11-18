@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react"
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
+import { Rocket, Smile, ShieldCheck, Clock3 } from "lucide-react"
 
 function Counter({ value, duration = 2 }: { value: string; duration?: number }) {
     const [count, setCount] = useState(0)
@@ -61,78 +62,57 @@ export default function StatsSection() {
     const stats = [
         {
             number: "7+",
-            label: "Proyectos entregados",
-            description:
-                "Soluciones robustas implementadas y listas para operar en entornos reales.",
+            label: "Proyectos Entregados",
+            description: "Soluciones robustas implementadas y listas para operar en entornos reales.",
+            icon: Rocket,
         },
         {
             number: "100%",
-            label: "Clientes satisfechos",
-            description:
-                "Enfoque orientado a resultados, confianza y relaciones de largo plazo.",
+            label: "Clientes Satisfechos",
+            description: "Enfoque orientado a resultados, confianza y relaciones de largo plazo.",
+            icon: Smile,
         },
         {
             number: "QA",
-            label: "Calidad garantizada",
-            description:
-                "Control de calidad desde el diseño hasta la validación final del producto.",
+            label: "Calidad Garantizada",
+            description: "Control de calidad desde el diseño hasta la validación final del producto.",
+            icon: ShieldCheck,
         },
         {
             number: "24/7",
-            label: "Soporte continuo",
-            description:
-                "Acompañamiento técnico y funcional después del despliegue.",
+            label: "Soporte Continuo",
+            description: "Acompañamiento técnico y funcional después del despliegue.",
+            icon: Clock3,
         },
     ]
 
     return (
-        <section
-            ref={ref}
-            className="relative overflow-hidden bg-[#EEEEEE] py-24 md:py-28"
-        >
-            {/* Transición suave superior */}
-            <div className="pointer-events-none absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-white via-[#F4F4F4] to-[#EEEEEE]" />
-
-            {/* Fondo decorativo */}
-            <div className="pointer-events-none absolute inset-0">
-                <div className="absolute left-1/2 top-24 h-72 w-72 -translate-x-1/2 rounded-full bg-blue-200/15 blur-[150px]" />
-                <div className="absolute bottom-0 left-0 h-64 w-64 rounded-full bg-sky-100/20 blur-[150px]" />
-                <div className="absolute right-0 top-1/3 h-64 w-64 rounded-full bg-blue-100/20 blur-[150px]" />
-
-                {/* patrón tecnológico muy sutil */}
-                <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.035)_1px,transparent_0)] [background-size:36px_36px]" />
-            </div>
-
+        <section ref={ref} className="relative overflow-hidden bg-[#f5f5f5] py-24 md:py-28">
             <div className="container relative z-10 mx-auto px-6">
-
-                {/* Encabezado */}
                 <motion.div
                     initial={{ opacity: 0, y: 24 }}
                     animate={inView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.7 }}
-                    className="mx-auto mb-16 max-w-3xl text-center"
+                    className="mx-auto mb-16 max-w-5xl text-center"
                 >
-                    <span className="mb-4 inline-flex rounded-full border border-gray-300 bg-white/70 px-4 py-1.5 text-sm font-medium text-gray-700 backdrop-blur-sm">
+                    <span className="inline-block text-[11px] font-medium uppercase tracking-[0.24em] text-[#2b3f52]">
                         Indicadores clave
                     </span>
 
-                    <h2 className="text-3xl font-bold tracking-tight text-gray-900 md:text-5xl">
-                        Resultados que reflejan{" "}
-                        <span className="bg-gradient-to-r from-gray-900 to-blue-700 bg-clip-text text-transparent">
-                            confianza, calidad y continuidad
-                        </span>
+                    <h2 className="mt-6 text-4xl font-black leading-[0.98] tracking-[-0.05em] text-[#0b2136] md:text-[4rem]">
+                        Resultados que reflejan <span className="text-[#5c7a96]">confianza, calidad y</span>
+                        <span className="block">continuidad</span>
                     </h2>
 
-                    <p className="mt-5 text-base leading-relaxed text-gray-600 md:text-lg">
-                        Cada proyecto se desarrolla con enfoque estratégico, validación
-                        técnica y acompañamiento constante para asegurar una entrega sólida.
+                    <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-[#4d5d6c] md:text-lg">
+                        Cada proyecto se desarrolla con un enfoque estratégico, validación técnica y
+                        acompañamiento constante para asegurar una entrega sólida.
                     </p>
                 </motion.div>
 
-                {/* Grid de estadísticas */}
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
-
                     {stats.map((stat, index) => {
+                        const Icon = stat.icon
                         const hasNumber = /[0-9]/.test(stat.number)
 
                         return (
@@ -141,23 +121,19 @@ export default function StatsSection() {
                                 initial={{ opacity: 0, y: 24 }}
                                 animate={inView ? { opacity: 1, y: 0 } : {}}
                                 transition={{ duration: 0.55, delay: index * 0.12 }}
-                                className="group relative overflow-hidden rounded-3xl border border-gray-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                                className="group relative overflow-hidden rounded-[1.5rem] border border-[#dfe6eb] bg-[#edf2f5] p-7 shadow-[0_8px_30px_rgba(15,23,42,0.02)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_48px_rgba(15,23,42,0.08)]"
                             >
-                                {/* glow suave hover */}
-                                <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-                                    <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-blue-100 blur-3xl" />
-                                </div>
-
                                 <div className="relative z-10">
-
-                                    <div className="mb-6 flex items-center justify-between">
-                                        <div className="h-px w-12 bg-gradient-to-r from-blue-600 to-transparent" />
-                                        <span className="text-xs uppercase tracking-[0.25em] text-gray-400">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[#d4dde4] bg-white/60 text-[#2b3f52]">
+                                            <Icon className="h-5 w-5" strokeWidth={2.2} />
+                                        </div>
+                                        <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[#7a8a99]">
                                             APD
                                         </span>
                                     </div>
 
-                                    <div className="mb-4 text-5xl font-black tracking-tight text-gray-900 md:text-6xl">
+                                    <div className="mt-8 text-5xl font-black tracking-[-0.08em] text-[#0d2238] md:text-6xl">
                                         {inView
                                             ? hasNumber
                                                 ? <Counter value={stat.number} />
@@ -167,39 +143,29 @@ export default function StatsSection() {
                                                 : stat.number}
                                     </div>
 
-                                    <h3 className="mb-3 text-lg font-semibold uppercase tracking-[0.14em] text-gray-800">
+                                    <h3 className="mt-5 text-[1.05rem] font-black leading-[1.1] tracking-[-0.04em] text-[#0d2238] md:text-[1.8rem]">
                                         {stat.label}
                                     </h3>
 
-                                    <p className="text-sm leading-7 text-gray-600">
+                                    <p className="mt-4 text-sm leading-7 text-[#4d5d6c] md:text-[0.97rem]">
                                         {stat.description}
                                     </p>
-
                                 </div>
                             </motion.div>
                         )
                     })}
-
                 </div>
 
-                {/* Bloque inferior */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={inView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.8, delay: 0.5 }}
-                    className="mx-auto mt-14 max-w-5xl rounded-3xl border border-gray-200 bg-white px-6 py-8 text-center shadow-sm md:px-10"
+                    className="mx-auto mt-12 max-w-6xl rounded-[1.5rem] border border-[#dfe6eb] bg-[#eef2f5] px-6 py-5 text-center shadow-[0_8px_30px_rgba(15,23,42,0.02)] md:px-10"
                 >
-                    <p className="text-base leading-relaxed text-gray-600 md:text-lg">
-                        Experiencia aplicada en soluciones como{" "}
-                        <span className="font-semibold text-gray-900">Pedx Calc</span>,{" "}
-                        <span className="font-semibold text-gray-900">ADAdmin</span> e{" "}
-                        <span className="font-semibold text-gray-900">
-                            Iglesias Integradas
-                        </span>,
-                        con visión de producto, escalabilidad y enfoque real en negocio.
+                    <p className="text-base leading-relaxed text-[#3e4c5b] md:text-[1.05rem]">
+                        Experiencia aplicada en soluciones como <span className="font-bold text-[#0d2238]">Pedx Calc</span>, <span className="font-bold text-[#0d2238]">ADAdmin</span> e <span className="font-bold text-[#0d2238]">Iglesias Integradas</span>, con visión de producto, escalabilidad y enfoque real en el negocio.
                     </p>
                 </motion.div>
-
             </div>
         </section>
     )

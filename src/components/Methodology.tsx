@@ -7,29 +7,29 @@ export default function Methodology() {
     const phases = [
         {
             num: "01",
-            title: "Inmersión",
-            desc: "Observamos y escuchamos tus necesidades para entender el ADN de tu negocio.",
+            title: "Descubrimiento",
+            desc: "Analizamos tus necesidades, objetivos y procesos para definir la mejor solución.",
             color: "from-blue-400/30 to-blue-100/10",
             icon: <FiSearch className="text-blue-500 text-3xl" />
         },
         {
             num: "02",
-            title: "Co-creación",
-            desc: "Diseñamos la arquitectura tecnológica mano a mano con tu equipo.",
+            title: "Diseño",
+            desc: "Diseñamos una propuesta funcional y clara, enfocada en usabilidad y resultados.",
             color: "from-purple-400/30 to-pink-100/10",
             icon: <FiUsers className="text-purple-500 text-3xl" />
         },
         {
             num: "03",
-            title: "Desarrollo Iterativo",
-            desc: "Entregas rápidas con QA continuo para garantizar un software robusto.",
+            title: "Desarrollo",
+            desc: "Construimos la solución con tecnología moderna, calidad y visión orientada al negocio.",
             color: "from-cyan-400/30 to-cyan-100/10",
             icon: <FiRepeat className="text-cyan-500 text-3xl" />
         },
         {
             num: "04",
-            title: "Despliegue y Éxito",
-            desc: "Lanzamiento estratégico y acompañamiento post-implementación.",
+            title: "Soporte",
+            desc: "Te acompañamos después del lanzamiento para mejorar, mantener y escalar la solución.",
             color: "from-apd-accent/30 to-apd-light/10",
             icon: <FiSend className="text-apd-accent text-3xl" />
         },
@@ -42,12 +42,12 @@ export default function Methodology() {
 
             <div className="container mx-auto px-6 relative z-10">
                 <div className="text-center mb-16">
-                    <h2 className="text-blue-500 font-semibold tracking-widest uppercase mb-3">Proceso</h2>
+                    <h2 className="text-blue-500 font-semibold tracking-widest uppercase mb-3">Nuestra propuesta de valor</h2>
                     <h3 className="text-4xl md:text-5xl font-bold text-white">
-                        Metodología <span className="text-apd-primary">DCS</span>
+                        Una metodología clara para <span className="text-apd-primary">convertir ideas en soluciones reales</span>
                     </h3>
                     <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
-                        Un enfoque ágil diseñado para transformar ideas complejas en soluciones digitales de alto rendimiento.
+                        Cada proyecto pasa por un proceso estructurado que combina estrategia, diseño, desarrollo y validación para entregar resultados medibles.
                     </p>
                 </div>
 

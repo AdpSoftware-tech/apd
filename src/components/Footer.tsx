@@ -7,8 +7,7 @@ import Link from "next/link"
 
 export default function Footer() {
     const { t } = useLocale()
-    // const currentYear = new Date().getFullYear()
-    const currentYear = 2023
+    const currentYear = new Date().getFullYear()
 
     const socialLinks = [
         {
@@ -24,9 +23,9 @@ export default function Footer() {
     ]
 
     const quickLinks = [
-        { name: t('nav.home'), href: "#hero" },
+        { name: t('nav.home'), href: "/" },
         { name: t('nav.services'), href: "/servicios" },
-        { name: t('nav.contact'), href: "#contacto" },
+        { name: t('nav.contact'), href: "/#contacto" },
     ]
 
     return (

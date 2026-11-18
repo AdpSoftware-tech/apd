@@ -14,6 +14,7 @@ const config: Config = {
                     dark: '#04233A',      // Fondo principal/header/footer
                     dark2: '#153656',    // Cards, secciones, hover
                     accent: '#06599B',   // Botones, links, detalles
+                    primary: '#2F86C9',  // Acentos de texto/íconos (antes indefinido)
                     light: '#7FA0BD',    // Fondos suaves, detalles
                     gray: '#637C88',     // Texto secundario, iconos, bordes
                     bglogo: '#EEEEEE',   // Fondo general claro

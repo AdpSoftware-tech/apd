@@ -10,13 +10,13 @@ export default function Hero() {
     const chips = t('hero.chips') as string[]
 
     return (
-        <header role="banner" className="relative min-h-[75vh] flex items-center justify-center bg-apd-bglogo overflow-hidden">
-            {/* Fondo muy sutil: un radial tenue para profundidad */}
+        <header id="hero" className="relative min-h-[75vh] flex items-center justify-center overflow-hidden bg-[#f7f7f5]">
             <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-apd-light/10 to-transparent"></div>
+                <div className="absolute inset-x-0 top-0 h-64 bg-[radial-gradient(circle_at_top,_rgba(103,126,149,0.18),transparent_65%)]"></div>
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.55),rgba(233,236,238,0.2))]"></div>
             </div>
 
-            <div className="container mx-auto px-6 py-20 text-center relative z-10 max-w-5xl">
+            <div className="container mx-auto px-6 py-24 text-center relative z-10 max-w-5xl">
 
                 {/* LOGO ESTÁTICO (más sobrio que el video) */}
                 <div className="flex justify-center mb-8">
@@ -31,22 +31,21 @@ export default function Hero() {
                     </div>
                 </div>
 
-                {/* Badge Superior, más discreto */}
                 <div className="inline-block px-4 py-1.5 mb-4 rounded-full bg-apd-light/20 text-sm text-apd-gray">
-                    {t('hero.badge')}
+                    Software para empresas
                 </div>
 
                 <h1 className="text-4xl md:text-7xl font-bold mb-4 tracking-tight text-[#04233B]">
-                    {t('hero.titlePrefix')} <span className="text-apd-accent">{t('hero.titleSuffix')}</span>
+                    Software para empresas que quieren <span className="text-apd-accent">crecer con claridad</span>
                 </h1>
 
                 <p className="text-base md:text-lg mb-8 max-w-3xl mx-auto text-apd-gray leading-relaxed">
-                    {t('hero.subtitle')}
+                    Desarrollamos soluciones digitales a medida para mejorar procesos, optimizar
+                    operaciones y acelerar resultados.
                 </p>
 
-                {/* Chips de servicios discretos */}
                 <div className="flex items-center justify-center gap-3 mb-8 flex-wrap">
-                    {chips.map((c: string) => (
+                    {['Desarrollo a medida', 'QA y calidad', 'Automatización', 'Plataformas web'].map((c: string) => (
                         <span key={c} className="text-sm px-3 py-1.5 rounded-full bg-apd-light/10 text-apd-dark2 border border-apd-light/30">{c}</span>
                     ))}
                 </div>
@@ -54,10 +53,10 @@ export default function Hero() {
                 <div className="flex items-center justify-center gap-6">
                     <a
                         href="#contacto"
-                        aria-label="Agendar consultoría"
-                        className="inline-flex text-[#04233B] items-center bg-apd-accent font-medium text-base px-8 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-apd-accent focus:ring-offset-2 shadow hover:bg-apd-dark2 hover:text-apd-bglogo transition"
+                        aria-label="Solicitar cotización"
+                        className="inline-flex text-white items-center bg-apd-accent font-medium text-base px-8 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-apd-accent focus:ring-offset-2 shadow hover:bg-apd-dark2 hover:text-apd-bglogo transition"
                     >
-                        {t('hero.ctaPrimary')}
+                        Solicitar cotización
                     </a>
 
                     <Link
@@ -65,7 +64,7 @@ export default function Hero() {
                         aria-label="Ver servicios"
                         className="text-base text-[#64808E] px-4 py-2 rounded-md hover:underline hover:text-apd-accent"
                     >
-                        {t("hero.ctaSecondary")}
+                        Ver servicios
                     </Link>
                 </div>
 

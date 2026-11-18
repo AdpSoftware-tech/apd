@@ -124,7 +124,7 @@ export default function CasesOfSuccess() {
                     <button
                         aria-label="Anterior"
                         onClick={prev}
-                        className="absolute left-[-56px] top-1/2 -translate-y-1/2 bg-white border border-apd-light rounded-full w-12 h-12 md:w-10 md:h-10 flex items-center justify-center shadow hover:bg-apd-accent/20 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-apd-accent"
+                        className="absolute z-10 left-1 md:-left-14 top-1/2 -translate-y-1/2 bg-white border border-apd-light rounded-full w-12 h-12 md:w-10 md:h-10 flex items-center justify-center shadow hover:bg-apd-accent/20 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-apd-accent"
                     >
                         <span className="sr-only">Anterior</span>
                         <svg width="22" height="22" fill="none" stroke="#153656" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" /></svg>
@@ -132,7 +132,7 @@ export default function CasesOfSuccess() {
                     <button
                         aria-label="Siguiente"
                         onClick={next}
-                        className="absolute right-[-56px] top-1/2 -translate-y-1/2 bg-white border border-apd-light rounded-full w-12 h-12 md:w-10 md:h-10 flex items-center justify-center shadow hover:bg-apd-accent/20 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-apd-accent"
+                        className="absolute z-10 right-1 md:-right-14 top-1/2 -translate-y-1/2 bg-white border border-apd-light rounded-full w-12 h-12 md:w-10 md:h-10 flex items-center justify-center shadow hover:bg-apd-accent/20 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-apd-accent"
                     >
                         <span className="sr-only">Siguiente</span>
                         <svg width="22" height="22" fill="none" stroke="#153656" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg>

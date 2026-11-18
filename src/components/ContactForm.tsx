@@ -48,14 +48,20 @@ export default function ContactForm() {
             <div className="container mx-auto px-6 max-w-3xl relative z-10">
                 <div className="mb-16 text-center md:text-left">
                     <h2 className="text-4xl md:text-5xl font-bold text-apd-dark mb-4">
-                        ¿Listo para <span className="text-apd-accent">empezar?</span>
+                        ¿Listo para <span className="text-apd-accent">transformar tu operación?</span>
                     </h2>
                     <p className="text-apd-gray text-lg">
-                        Cuéntanos sobre tu proyecto y diseñemos juntos una solución de alto impacto.
+                        Cuéntanos sobre tu proyecto y te ayudamos a definir la mejor solución para tu negocio.
                     </p>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-12 bg-white/80 rounded-2xl shadow-[0_0_40px_4px_rgba(6,89,155,0.18)] p-8 border border-apd-light/30 backdrop-blur-md">
+                    {/* Honeypot anti-spam: invisible para personas, los bots lo llenan */}
+                    <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+                        <label htmlFor="website">Website</label>
+                        <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+                    </div>
+
                     <div className="space-y-6">
                         <label className={labelStyle}>Nombre Completo</label>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -125,7 +131,7 @@ export default function ContactForm() {
                     )}
                     {status === "error" && (
                         <p className="text-red-500 font-medium animate-shake">
-                            ✕ Hubo un error. Por favor, escriba a info@apd.solutions directamente.
+                            ✕ Hubo un error. Por favor, escriba a apdsolutions5@gmail.com directamente.
                         </p>
                     )}
                 </div>

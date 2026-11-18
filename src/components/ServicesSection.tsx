@@ -87,15 +87,15 @@ export default function ServicesSection() {
                     </span>
 
                     <h2 className="mt-5 text-4xl font-extrabold tracking-tight text-gray-900 md:text-5xl">
-                        Soluciones en{" "}
+                        Servicios diseñados para{" "}
                         <span className="bg-gradient-to-r from-gray-900 to-blue-700 bg-clip-text text-transparent">
-                            tecnología, consultoría y software
+                            impulsar tu negocio
                         </span>
                     </h2>
 
                     <p className="mt-6 text-lg leading-relaxed text-gray-600">
-                        Ofrecemos servicios integrales para empresas, instituciones y proyectos
-                        que necesitan acompañamiento técnico, estratégico y digital.
+                        Creamos soluciones digitales para empresas que necesitan mejorar procesos,
+                        automatizar tareas y operar con mayor eficiencia y confianza.
                     </p>
                 </motion.div>
 

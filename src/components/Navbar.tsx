@@ -12,7 +12,6 @@ export default function Navbar() {
 
     const links = useMemo(
         () => [
-            { href: "/", label: "Inicio" },
             { href: "/servicios", label: "Servicios" },
             { href: "/#contacto", label: "Contacto" },
         ],
@@ -133,6 +132,8 @@ export default function Navbar() {
                     <button
                         ref={menuBtnRef}
                         className="text-apd-bglogo p-2"
+                        aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
+                        aria-expanded={mobileOpen}
                         onClick={() => setMobileOpen((v) => !v)}
                     >
                         ☰

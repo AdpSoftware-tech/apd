@@ -8,44 +8,43 @@ import { FiHeart, FiShield, FiUsers } from "react-icons/fi"
 export default function About() {
     const pillars = [
         {
-            title: "Empatía Activa",
-            desc: "No somos solo programadores; somos socios estratégicos. Entendemos su negocio antes de proponer una sola línea de código.",
+            title: "Desarrollo a medida",
+            desc: "Creamos soluciones digitales pensadas para resolver necesidades reales de negocio, con enfoque en funcionalidad, escalabilidad y resultados.",
             icon: <FiHeart className="text-red-400" />
         },
         {
-            title: "QA al Frente",
-            desc: "La calidad no es el paso final, es nuestra base. Garantizamos robustez desde el primer boceto hasta el despliegue.",
-            icon: <FiShield className="text-green-400" /> // <--- Cambiado a FiShield
+            title: "Calidad garantizada",
+            desc: "La calidad está presente desde el diseño hasta la implementación final, para entregar software robusto y confiable.",
+            icon: <FiShield className="text-green-400" />
         },
         {
             title: "Co-creación",
-            desc: "Usted es el experto en su negocio; nosotros en tecnología. Juntos diseñamos la solución perfecta.",
+            desc: "Trabajamos con tu equipo para transformar procesos complejos en experiencias digitales más claras, rápidas y eficientes.",
             icon: <FiUsers className="text-blue-400" />
         },
     ]
 
     return (
-        <section id="nosotros" className="py-24 bg-apd-dark relative overflow-hidden">
-            {/* Decoración de fondo sutil */}
-            <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-[#7FA0BD]/20 blur-[120px] rounded-full pointer-events-none"></div>
+        <section id="nosotros" className="py-24 bg-[#f3f3f1] relative overflow-hidden">
+            <div className="absolute top-0 left-1/4 w-[420px] h-[420px] bg-[#dfe8ef]/80 blur-[120px] rounded-full pointer-events-none"></div>
             <div className="container mx-auto px-6 relative z-10">
                 <div className="max-w-4xl mx-auto text-center mb-20">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-4xl md:text-5xl font-bold text-[#02233B] mb-8 drop-shadow-2xl"
+                        className="text-4xl md:text-5xl font-bold text-[#02233B] mb-8 tracking-[-0.04em]"
                     >
-                        Nuestra Propuesta de <span className="text-[#7FA0BD] drop-shadow">Valor</span>
+                        Soluciones digitales para empresas que buscan <span className="text-[#5d7d96]">mejorar su operación</span>
                     </motion.h2>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
                         viewport={{ once: true }}
-                        className="text-lg md:text-xl text-[#02233B] leading-relaxed drop-shadow"
+                        className="text-lg md:text-xl text-[#3f4f60] leading-relaxed"
                     >
-                        En <span className="text-[#7FA0BD] font-bold">A.P.D. Solutions</span>, nos especializamos en transformar desafíos operativos en ventajas competitivas. Aplicamos nuestra <span className="text-[#597176] font-bold">Metodología DCS</span> para asegurar que cada solución aporte un valor real, medible y escalable.
+                        Somos una empresa de software en Costa Rica especializada en soluciones digitales para empresas. Diseñamos y desarrollamos plataformas, automatizaciones y aplicaciones que ayudan a mejorar la operación, aumentar la productividad y transformar procesos complejos en experiencias más eficientes.
                     </motion.p>
                 </div>
                 <div className="grid md:grid-cols-3 gap-8">
@@ -56,20 +55,18 @@ export default function About() {
                             whileInView={{ opacity: 1, scale: 1 }}
                             transition={{ delay: idx * 0.1 }}
                             viewport={{ once: true }}
-                            className="relative group p-10 bg-apd-dark/90 border-2 border-[#7FA0BD] rounded-3xl hover:border-[#597176] hover:bg-[#7FA0BD]/10 transition-all duration-500 shadow-2xl"
+                            className="relative group p-10 bg-white border border-[#dde5eb] rounded-[1.7rem] hover:border-[#b7c7d5] hover:shadow-[0_20px_45px_rgba(15,23,42,0.06)] transition-all duration-500"
                         >
-                            {/* Icono Flotante */}
-                            <div className="text-5xl mb-6 inline-block p-5 bg-[#7FA0BD]/20 border-2 border-[#7FA0BD] rounded-2xl group-hover:scale-110 group-hover:bg-[#597176]/30 transition-transform duration-500 shadow-lg">
+                            <div className="text-5xl mb-6 inline-block p-5 bg-[#eef4f8] border border-[#dfeaf1] rounded-2xl group-hover:scale-110 transition-transform duration-500 shadow-sm">
                                 {pillar.icon}
                             </div>
-                            <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-[#7FA0BD] transition-colors drop-shadow-lg">
+                            <h3 className="text-2xl font-bold text-[#0d2238] mb-4">
                                 {pillar.title}
                             </h3>
-                            <p className="text-white leading-relaxed font-medium drop-shadow group-hover:text-[#02233B] group-focus:text-[#02233B] transition-colors duration-300">
+                            <p className="text-[#4b5d6e] leading-relaxed font-medium">
                                 {pillar.desc}
                             </p>
-                            {/* Brillo en la esquina al hacer hover */}
-                            <div className="absolute top-0 right-0 w-20 h-20 bg-[#7FA0BD]/40 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                            <div className="absolute top-0 right-0 w-20 h-20 bg-[#dfeaf1] blur-3xl opacity-40 group-hover:opacity-70 transition-opacity"></div>
                         </motion.div>
                     ))}
                 </div>

@@ -13,6 +13,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://apdsoftwaresolutions.com"),
   title: "A.P.D. Solutions | Desarrollo de Software y QA Automation en Costa Rica",
   description:
     "Empresa de desarrollo de software en Costa Rica especializada en soluciones digitales de alto impacto. Expertos en Desarrollo Fullstack, Mobile con Flutter y QA Automation.",
@@ -31,14 +32,6 @@ export const metadata: Metadata = {
       "Expertos en creación de software a medida y control de calidad garantizado.",
     url: "https://apdsoftwaresolutions.com",
     siteName: "A.P.D. Solutions",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "A.P.D. Solutions - Tech Solutions",
-      },
-    ],
     locale: "es_CR",
     type: "website",
   },
@@ -46,7 +39,6 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "A.P.D. Solutions",
     description: "Ingeniería de software de precisión y QA.",
-    images: ["/og-image.png"],
   },
 };
 
@@ -57,7 +49,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" className="scroll-smooth">
-      <body className={`${inter.className} bg-apd-bglogo text-apd-dark antialiased`}>
+      <body className={`${inter.className} bg-[#f4f3f1] text-[#0d2238] antialiased`}>
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 bg-white text-black px-3 py-2 rounded"
@@ -66,10 +58,10 @@ export default function RootLayout({
         </a>
 
         <LocaleProvider>
-          <div className="min-h-screen flex flex-col">
+          <div className="min-h-screen flex flex-col bg-transparent">
             <Navbar />
 
-            <main id="main" className="flex-grow container mx-auto px-6 py-12 max-w-6xl">
+            <main id="main" className="flex-grow w-full max-w-[1200px] mx-auto px-4 sm:px-6 py-0">
               {children}
             </main>
 

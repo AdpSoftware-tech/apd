@@ -3,10 +3,13 @@
 import { motion } from "framer-motion"
 import { useLocale } from "../context/LocaleContext"
 
+type Project = { title: string; desc: string; status?: string; tech: string[] }
+type ExperienceData = { eyebrow: string; title: string; subtitle: string; projects: Project[] }
+
 export default function Experience() {
     const { t } = useLocale()
-    const data = t('experience') as any
-    const projects = data.projects as Array<any>
+    const data = t('experience') as unknown as ExperienceData
+    const projects = data.projects
 
     return (
         <section id="experiencia" className="py-24 bg-apd-dark relative">

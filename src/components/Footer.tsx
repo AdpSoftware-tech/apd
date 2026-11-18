@@ -1,131 +1,118 @@
-"use client"
-
-import { motion } from "framer-motion"
-import { FiLinkedin, FiInstagram, FiMail, FiMapPin } from "react-icons/fi"
-import { useLocale } from "../context/LocaleContext"
 import Link from "next/link"
+import Image from "next/image"
+import { FiLinkedin, FiInstagram, FiMail, FiMapPin } from "react-icons/fi"
+import { ArrowRight } from "lucide-react"
+import { Container } from "./ui"
+
+const socialLinks = [
+    { icon: FiLinkedin, href: "https://www.linkedin.com/in/adonis-aleman/", label: "LinkedIn" },
+    { icon: FiInstagram, href: "https://www.instagram.com/a.p.d.software_solutions/", label: "Instagram" },
+]
+
+const navLinks = [
+    { name: "Inicio", href: "/" },
+    { name: "Servicios", href: "/#servicios" },
+    { name: "Casos de éxito", href: "/#casos" },
+    { name: "Proceso", href: "/#proceso" },
+    { name: "Contacto", href: "/#contacto" },
+]
+
+const specialties = ["Desarrollo Fullstack", "QA Automation", "Apps móviles (Flutter)", "Sistemas SaaS", "Consultoría tecnológica"]
 
 export default function Footer() {
-    const { t } = useLocale()
     const currentYear = new Date().getFullYear()
 
-    const socialLinks = [
-        {
-            icon: <FiLinkedin />,
-            href: "https://www.linkedin.com/in/adonis-aleman/",
-            label: "LinkedIn"
-        },
-        {
-            icon: <FiInstagram />,
-            href: "https://www.instagram.com/a.p.d.software_solutions/",
-            label: "Instagram"
-        },
-    ]
-
-    const quickLinks = [
-        { name: t('nav.home'), href: "/" },
-        { name: t('nav.services'), href: "/servicios" },
-        { name: t('nav.contact'), href: "/#contacto" },
-    ]
-
     return (
-        <footer className="bg-apd-bglogo border-t border-apd-dark/10 pt-20 pb-10 relative overflow-hidden">
-            {/* Glow decorativo sutil en la esquina inferior */}
-            <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-apd-primary/10 blur-[100px] pointer-events-none"></div>
-            <div className="container mx-auto px-6 relative z-10">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <footer className="relative overflow-hidden bg-apd-ink text-white">
+            <div className="pointer-events-none absolute -top-40 left-1/2 h-80 w-[800px] -translate-x-1/2 rounded-full bg-apd-accent/20 blur-[140px]" />
 
-                    {/* Columna 1: Branding y Propósito */}
-                    <div className="col-span-1 lg:col-span-1">
-                        <h4 className="text-2xl font-bold text-apd-dark mb-6">
-                            A.P.D. <span className="text-apd-primary">Software Solutions</span>
-                        </h4>
-                        <p className="text-apd-dark/70 leading-relaxed mb-8">
-                            {t('hero.subtitle')}
+            <Container className="relative">
+                {/* Banda CTA */}
+                <div className="flex flex-col items-start justify-between gap-8 border-b border-white/10 py-16 md:flex-row md:items-center">
+                    <h2 className="max-w-2xl font-display text-3xl font-extrabold leading-tight tracking-[-0.03em] sm:text-4xl">
+                        Desbloquea el potencial de tu proyecto.
+                    </h2>
+                    <Link
+                        href="/#contacto"
+                        className="group inline-flex flex-shrink-0 items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-apd-dark transition hover:bg-apd-sky"
+                    >
+                        Conversemos
+                        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                </div>
+
+                <div className="grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
+                    <div>
+                        <Link href="/" className="flex items-center gap-3">
+                            <span className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-white">
+                                <Image src="/apd.png" alt="" width={40} height={40} className="object-cover" />
+                            </span>
+                            <span className="font-display text-lg font-bold">A.P.D. Software Solutions</span>
+                        </Link>
+                        <p className="mt-5 max-w-sm leading-relaxed text-apd-mist">
+                            Soluciones integrales para PYMES, medianas y grandes empresas: desde el soporte técnico hasta la
+                            transformación digital y la consultoría especializada.
                         </p>
-                        <div className="flex gap-4">
-                            {socialLinks.map((social, idx) => (
-                                <motion.a
-                                    key={idx}
-                                    href={social.href}
+                        <div className="mt-6 flex gap-3">
+                            {socialLinks.map(({ icon: Icon, href, label }) => (
+                                <a
+                                    key={label}
+                                    href={href}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    whileHover={{ y: -3, color: "#3B82F6" }}
-                                    className="w-10 h-10 rounded-full bg-apd-dark/10 border border-apd-dark/10 flex items-center justify-center text-apd-dark hover:text-apd-primary transition-all"
-                                    aria-label={social.label}
+                                    aria-label={label}
+                                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-apd-mist transition hover:-translate-y-0.5 hover:border-apd-sky hover:text-apd-sky"
                                 >
-                                    {social.icon}
-                                </motion.a>
+                                    <Icon />
+                                </a>
                             ))}
                         </div>
                     </div>
 
-                    {/* Columna 2: Navegación */}
                     <div>
-                        <h5 className="text-apd-dark font-bold mb-6 uppercase tracking-widest text-sm">{t('footer.navigationTitle')}</h5>
-                        <ul className="space-y-4">
-                            {quickLinks.map((link) => (
-                                <li key={link.href}>
-                                    <a href={link.href} className="text-apd-dark/70 hover:text-apd-accent focus:text-apd-accent focus:outline-none transition-colors duration-300">
-                                        {link.name}
-                                    </a>
+                        <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-white/50">Navegación</h3>
+                        <ul className="mt-5 space-y-3">
+                            {navLinks.map((l) => (
+                                <li key={l.href}>
+                                    <Link href={l.href} className="text-apd-mist transition hover:text-white">
+                                        {l.name}
+                                    </Link>
                                 </li>
                             ))}
                         </ul>
                     </div>
 
-                    {/* Columna 3: Servicios / Enfoque */}
                     <div>
-                        <h5 className="text-apd-dark font-bold mb-6 uppercase tracking-widest text-sm">{t('footer.specialtiesTitle')}</h5>
-                        <ul className="space-y-4 text-apd-dark/70">
-                            <li className="flex items-center gap-2">
-                                <span className="w-1.5 h-1.5 rounded-full bg-apd-primary"></span>
-                                Desarrollo Fullstack
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <span className="w-1.5 h-1.5 rounded-full bg-apd-primary"></span>
-                                QA Automation
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <span className="w-1.5 h-1.5 rounded-full bg-apd-primary"></span>
-                                Mobile Apps (Flutter)
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <span className="w-1.5 h-1.5 rounded-full bg-apd-primary"></span>
-                                Arquitectura de Datos
-                            </li>
+                        <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-white/50">Especialidades</h3>
+                        <ul className="mt-5 space-y-3 text-apd-mist">
+                            {specialties.map((s) => (
+                                <li key={s}>{s}</li>
+                            ))}
                         </ul>
                     </div>
 
-                    {/* Columna 4: Ubicación y Contacto */}
                     <div>
-                        <h5 className="text-apd-dark font-bold mb-6 uppercase tracking-widest text-sm">{t('footer.contactTitle')}</h5>
-                        <ul className="space-y-4">
-                            <li className="flex items-center gap-3 text-apd-dark/70">
-                                <FiMail className="text-apd-primary" />
-                                <span>apdsolutions5@gmail.com</span>
+                        <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-white/50">Contacto directo</h3>
+                        <ul className="mt-5 space-y-4 text-apd-mist">
+                            <li>
+                                <a href="mailto:apdsolutions5@gmail.com" className="flex items-center gap-3 transition hover:text-white">
+                                    <FiMail className="text-apd-sky" /> apdsolutions5@gmail.com
+                                </a>
                             </li>
-                            <li className="flex items-center gap-3 text-apd-dark/70">
-                                <FiMapPin className="text-apd-primary" />
-                                <span>Alajuela, Costa Rica</span>
+                            <li className="flex items-center gap-3">
+                                <FiMapPin className="text-apd-sky" /> Alajuela, Costa Rica
                             </li>
                         </ul>
                     </div>
                 </div>
 
-                {/* Línea final de Copyright */}
-                <div className="pt-8 border-t border-apd-dark/10 flex flex-col md:flex-row justify-between items-center gap-4 text-apd-dark/50 text-xs tracking-widest">
-                    <p>
-                        © {currentYear} A.P.D. SOFTWARE SOLUTIONS. {t('footer.copyrightSuffix')}
-                    </p>
-                    <div className="flex gap-6">
-                        {/* <a href="/terms" className="hover:text-apd-primary transition-colors">{t('footer.terms')}</a> */}
-                        <Link href="/privacy" className="hover:text-apd-primary transition-colors">
-                            {t('footer.privacy')}
-                        </Link>
-                    </div>
+                <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 py-8 text-xs text-white/40 md:flex-row">
+                    <p>© {currentYear} A.P.D. Software Solutions. Todos los derechos reservados.</p>
+                    <Link href="/privacy" className="transition hover:text-white">
+                        Política de privacidad
+                    </Link>
                 </div>
-            </div>
+            </Container>
         </footer>
     )
 }

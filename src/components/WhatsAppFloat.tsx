@@ -13,7 +13,7 @@ export default function WhatsAppFloat() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Contactar por WhatsApp"
-            className="fixed bottom-6 right-6 z-[9999] flex items-center gap-3 rounded-full bg-green-500 px-5 py-3 text-white shadow-lg animate-bounce hover:scale-110 hover:bg-green-600 transition-all duration-300"
+            className="fixed bottom-6 right-6 z-[9999] flex items-center gap-3 rounded-full bg-green-500 px-5 py-3 text-white shadow-[0_12px_30px_-8px_rgba(34,197,94,0.6)] ring-4 ring-green-500/15 hover:-translate-y-0.5 hover:bg-green-600 transition-all duration-300"
         >
             <svg
                 xmlns="http://www.w3.org/2000/svg"

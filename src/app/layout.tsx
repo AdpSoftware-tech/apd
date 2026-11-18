@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import Navbar from "../components/Navbar";
@@ -10,6 +10,12 @@ import WhatsAppFloat from "@/components/WhatsAppFloat";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+});
+
+const display = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["600", "700", "800"],
+  variable: "--font-display",
 });
 
 export const metadata: Metadata = {
@@ -48,8 +54,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className="scroll-smooth">
-      <body className={`${inter.className} bg-[#f4f3f1] text-[#0d2238] antialiased`}>
+    <html lang="es" className={`scroll-smooth ${inter.variable} ${display.variable}`}>
+      <body className="font-sans bg-apd-paper text-[#0d2238] antialiased">
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 bg-white text-black px-3 py-2 rounded"
@@ -61,7 +67,7 @@ export default function RootLayout({
           <div className="min-h-screen flex flex-col bg-transparent">
             <Navbar />
 
-            <main id="main" className="flex-grow w-full max-w-[1200px] mx-auto px-4 sm:px-6 py-0">
+            <main id="main" className="flex-grow w-full">
               {children}
             </main>
 

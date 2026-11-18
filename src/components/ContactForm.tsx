@@ -1,6 +1,12 @@
 "use client"
 
 import { useState } from "react"
+import { ArrowRight, Mail, MapPin, MessageCircle, CheckCircle2, AlertCircle } from "lucide-react"
+import { Container, Eyebrow } from "./ui"
+
+const WHATSAPP_URL = `https://wa.me/50662346599?text=${encodeURIComponent(
+    "Hola, estoy interesado en los servicios de desarrollo de software de A.P.D. Solutions."
+)}`
 
 export default function ContactForm() {
     const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
@@ -9,9 +15,8 @@ export default function ContactForm() {
         e.preventDefault()
         setStatus("loading")
 
-        const form = e.currentTarget;
-        const formData = new FormData(form)
-        const data = Object.fromEntries(formData)
+        const form = e.currentTarget
+        const data = Object.fromEntries(new FormData(form))
 
         try {
             const res = await fetch("/api/contact", {
@@ -19,15 +24,10 @@ export default function ContactForm() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data),
             })
-
             if (res.ok) {
                 setStatus("success")
-                form.reset() // <--- Limpia todos los campos del formulario
-
-                // Opcional: El mensaje de éxito desaparece tras 5 segundos
-                setTimeout(() => {
-                    setStatus("idle")
-                }, 5000)
+                form.reset()
+                setTimeout(() => setStatus("idle"), 6000)
             } else {
                 setStatus("error")
             }
@@ -36,106 +36,131 @@ export default function ContactForm() {
         }
     }
 
-    // Estilos para inputs y labels adaptados a fondo claro
-    const inputStyle = "w-full bg-apd-bglogo border border-apd-light/40 rounded-lg py-3 px-4 text-apd-dark2 placeholder:text-apd-gray focus:border-apd-accent focus:ring-2 focus:ring-apd-accent/30 focus:outline-none transition-all shadow-sm"
-    const labelStyle = "block text-base font-semibold text-apd-dark2 mb-1"
-    const requiredStyle = "text-xs font-normal text-apd-gray ml-1 lowercase"
+    const input =
+        "w-full rounded-xl border border-[#DCE3E9] bg-white px-4 py-3 text-apd-dark placeholder:text-[#9AAAB7] transition focus:border-apd-primary focus:outline-none focus:ring-4 focus:ring-apd-primary/15"
+    const label = "mb-1.5 block text-sm font-medium text-apd-dark"
 
     return (
-        <section id="contacto" className="py-24 bg-apd-bglogo relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-apd-light/10 blur-[100px] pointer-events-none"></div>
+        <section id="contacto" className="relative bg-apd-paper py-24 sm:py-32">
+            <Container>
+                <div className="grid overflow-hidden rounded-[2rem] bg-white shadow-[0_40px_80px_-40px_rgba(4,35,58,0.35)] ring-1 ring-[#E1E7EC] lg:grid-cols-[0.9fr_1.1fr]">
+                    {/* Panel informativo */}
+                    <div className="relative overflow-hidden bg-apd-ink p-8 text-white sm:p-12">
+                        <div className="bg-grid pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_at_top_left,black_10%,transparent_70%)]" />
+                        <div className="pointer-events-none absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-apd-accent/40 blur-[100px]" />
 
-            <div className="container mx-auto px-6 max-w-3xl relative z-10">
-                <div className="mb-16 text-center md:text-left">
-                    <h2 className="text-4xl md:text-5xl font-bold text-apd-dark mb-4">
-                        ¿Listo para <span className="text-apd-accent">transformar tu operación?</span>
-                    </h2>
-                    <p className="text-apd-gray text-lg">
-                        Cuéntanos sobre tu proyecto y te ayudamos a definir la mejor solución para tu negocio.
-                    </p>
-                </div>
+                        <div className="relative">
+                            <Eyebrow dark>Contacto</Eyebrow>
+                            <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight tracking-[-0.03em] sm:text-4xl">
+                                ¿Tienes una idea en mente? <span className="text-gradient">Construyámosla juntos.</span>
+                            </h2>
+                            <p className="mt-5 leading-relaxed text-apd-mist">
+                                Cuéntanos sobre tu proyecto y te ayudamos a definir la mejor solución para tu negocio.
+                            </p>
 
-                <form onSubmit={handleSubmit} className="space-y-12 bg-white/80 rounded-2xl shadow-[0_0_40px_4px_rgba(6,89,155,0.18)] p-8 border border-apd-light/30 backdrop-blur-md">
-                    {/* Honeypot anti-spam: invisible para personas, los bots lo llenan */}
-                    <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
-                        <label htmlFor="website">Website</label>
-                        <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+                            <ul className="mt-10 space-y-5">
+                                <li>
+                                    <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4">
+                                        <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-apd-sky transition group-hover:bg-white/15">
+                                            <MessageCircle className="h-5 w-5" />
+                                        </span>
+                                        <span>
+                                            <span className="block text-xs uppercase tracking-wider text-apd-mist">WhatsApp</span>
+                                            <span className="font-medium group-hover:text-apd-sky">+506 6234-6599</span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="mailto:apdsolutions5@gmail.com" className="group flex items-center gap-4">
+                                        <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-apd-sky transition group-hover:bg-white/15">
+                                            <Mail className="h-5 w-5" />
+                                        </span>
+                                        <span>
+                                            <span className="block text-xs uppercase tracking-wider text-apd-mist">Correo</span>
+                                            <span className="font-medium group-hover:text-apd-sky">apdsolutions5@gmail.com</span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li className="flex items-center gap-4">
+                                    <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-apd-sky">
+                                        <MapPin className="h-5 w-5" />
+                                    </span>
+                                    <span>
+                                        <span className="block text-xs uppercase tracking-wider text-apd-mist">Ubicación</span>
+                                        <span className="font-medium">Alajuela, Costa Rica</span>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
 
-                    <div className="space-y-6">
-                        <label className={labelStyle}>Nombre Completo</label>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    {/* Formulario */}
+                    <form onSubmit={handleSubmit} className="relative space-y-5 p-8 sm:p-12">
+                        {/* Honeypot anti-spam: invisible para personas, los bots lo llenan */}
+                        <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+                            <label htmlFor="website">Website</label>
+                            <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+                        </div>
+
+                        <div className="grid gap-5 sm:grid-cols-2">
                             <div>
-                                <input name="name" required className={inputStyle} id="name" placeholder="Ej. Juan" />
-                                <label htmlFor="name" className="text-xs text-apd-gray mt-2 block uppercase tracking-tighter">
-                                    Nombre <span className={requiredStyle}>(obligatorio)</span>
-                                </label>
+                                <label htmlFor="name" className={label}>Nombre</label>
+                                <input id="name" name="name" required maxLength={80} autoComplete="given-name" className={input} placeholder="Juan" />
                             </div>
                             <div>
-                                <input name="lastname" required className={inputStyle} id="lastname" placeholder="Ej. Pérez" />
-                                <label htmlFor="lastname" className="text-xs text-apd-gray mt-2 block uppercase tracking-tighter">
-                                    Apellido <span className={requiredStyle}>(obligatorio)</span>
-                                </label>
+                                <label htmlFor="lastname" className={label}>Apellido</label>
+                                <input id="lastname" name="lastname" required maxLength={80} autoComplete="family-name" className={input} placeholder="Pérez" />
                             </div>
                         </div>
-                    </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                        <div className="space-y-2">
-                            <label className={labelStyle}>
-                                Correo <span className={requiredStyle}>(obligatorio)</span>
-                            </label>
-                            <input name="email" type="email" required className={inputStyle} placeholder="correo@ejemplo.com" />
+                        <div className="grid gap-5 sm:grid-cols-2">
+                            <div>
+                                <label htmlFor="email" className={label}>Correo</label>
+                                <input id="email" name="email" type="email" required maxLength={254} autoComplete="email" className={input} placeholder="correo@empresa.com" />
+                            </div>
+                            <div>
+                                <label htmlFor="phone" className={label}>WhatsApp</label>
+                                <input id="phone" name="phone" type="tel" required maxLength={30} autoComplete="tel" className={input} placeholder="+506 0000-0000" />
+                            </div>
                         </div>
-                        <div className="space-y-2">
-                            <label className={labelStyle}>
-                                WhatsApp <span className={requiredStyle}>(obligatorio)</span>
-                            </label>
-                            <input name="phone" type="tel" required placeholder="+506 0000-0000" className={inputStyle} />
+
+                        <div>
+                            <label htmlFor="subject" className={label}>Asunto</label>
+                            <input id="subject" name="subject" required maxLength={150} className={input} placeholder="Ej. Desarrollo de software a medida" />
                         </div>
-                    </div>
 
-                    <div className="space-y-2">
-                        <label className={labelStyle}>
-                            Asunto <span className={requiredStyle}>(obligatorio)</span>
-                        </label>
-                        <input name="subject" required className={inputStyle} placeholder="Ej. Desarrollo de Software a medida" />
-                    </div>
+                        <div>
+                            <label htmlFor="message" className={label}>Mensaje</label>
+                            <textarea id="message" name="message" required maxLength={5000} rows={5} className={`${input} resize-none`} placeholder="Cuéntanos un poco sobre tu proyecto..." />
+                        </div>
 
-                    <div className="space-y-2">
-                        <label className={labelStyle}>
-                            Mensaje <span className={requiredStyle}>(obligatorio)</span>
-                        </label>
-                        <textarea name="message" required rows={2} className={`${inputStyle} resize-none`} placeholder="Cuéntanos un poco más..." />
-                    </div>
+                        <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
+                            <p className="text-xs text-apd-gray">Todos los campos son obligatorios.</p>
+                            <button
+                                type="submit"
+                                disabled={status === "loading"}
+                                className="group inline-flex items-center justify-center gap-2 rounded-full bg-apd-dark px-8 py-3.5 text-sm font-semibold text-white transition hover:bg-apd-accent disabled:opacity-60"
+                            >
+                                {status === "loading" ? "Enviando..." : "Enviar solicitud"}
+                                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                            </button>
+                        </div>
 
-                    <div className="pt-6">
-                        <button
-                            type="submit"
-                            disabled={status === "loading"}
-                            className="group relative bg-apd-accent hover:bg-apd-dark2 text-apd-bglogo font-bold px-16 py-4 rounded-xl transition-all duration-300 shadow-xl hover:shadow-[0_0_40px_4px_rgba(6,89,155,0.18)] disabled:opacity-50"
-                        >
-                            <span className="flex items-center gap-2">
-                                {status === "loading" ? "Procesando..." : "Enviar Solicitud"}
-                                <span className="group-hover:translate-x-1 transition-transform">→</span>
-                            </span>
-                        </button>
-                    </div>
-                </form>
-
-                <div className="mt-8 h-8">
-                    {status === "success" && (
-                        <p className="text-green-500 font-medium flex items-center gap-2 animate-fade-in">
-                            ✓ ¡Mensaje enviado! Nos contactaremos pronto con usted.
-                        </p>
-                    )}
-                    {status === "error" && (
-                        <p className="text-red-500 font-medium animate-shake">
-                            ✕ Hubo un error. Por favor, escriba a apdsolutions5@gmail.com directamente.
-                        </p>
-                    )}
+                        <div aria-live="polite">
+                            {status === "success" && (
+                                <p className="flex items-center gap-2 rounded-xl bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-700">
+                                    <CheckCircle2 className="h-5 w-5" /> ¡Mensaje enviado! Te contactaremos pronto.
+                                </p>
+                            )}
+                            {status === "error" && (
+                                <p className="flex items-center gap-2 rounded-xl bg-red-50 px-4 py-3 text-sm font-medium text-red-700">
+                                    <AlertCircle className="h-5 w-5" /> Hubo un error. Escríbenos a apdsolutions5@gmail.com.
+                                </p>
+                            )}
+                        </div>
+                    </form>
                 </div>
-            </div>
+            </Container>
         </section>
     )
 }

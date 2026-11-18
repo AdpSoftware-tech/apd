@@ -1,28 +1,29 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, Menu, X } from "lucide-react";
+
+const links = [
+    { href: "/#servicios", label: "Servicios" },
+    { href: "/#casos", label: "Casos de éxito" },
+    { href: "/#proceso", label: "Proceso" },
+    { href: "/#contacto", label: "Contacto" },
+];
 
 export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
     const menuBtnRef = useRef<HTMLButtonElement | null>(null);
-
-    const links = useMemo(
-        () => [
-            { href: "/servicios", label: "Servicios" },
-            { href: "/#contacto", label: "Contacto" },
-        ],
-        []
-    );
+    const pathname = usePathname();
 
     const closeMobile = useCallback(() => setMobileOpen(false), []);
 
     useEffect(() => {
         let ticking = false;
-
         const onScroll = () => {
             if (!ticking) {
                 window.requestAnimationFrame(() => {
@@ -32,149 +33,118 @@ export default function Navbar() {
                 ticking = true;
             }
         };
-
+        onScroll();
         window.addEventListener("scroll", onScroll, { passive: true });
         return () => window.removeEventListener("scroll", onScroll);
     }, []);
 
     useEffect(() => {
         const onResize = () => {
-            if (window.innerWidth >= 768) setMobileOpen(false);
+            if (window.innerWidth >= 1024) setMobileOpen(false);
         };
-
         window.addEventListener("resize", onResize);
         return () => window.removeEventListener("resize", onResize);
     }, []);
 
     useEffect(() => {
         if (!mobileOpen) return;
-
         const onKeyDown = (e: KeyboardEvent) => {
             if (e.key === "Escape") setMobileOpen(false);
         };
-
         document.addEventListener("keydown", onKeyDown);
         document.body.style.overflow = "hidden";
-
+        const btn = menuBtnRef.current;
         return () => {
             document.removeEventListener("keydown", onKeyDown);
             document.body.style.overflow = "";
-            menuBtnRef.current?.focus();
+            btn?.focus();
         };
     }, [mobileOpen]);
 
-    function NavLinks({ variant }: { variant: "desktop" | "mobile" }) {
-        return (
-            <>
-                {links.map((link) => (
-                    <Link
-                        key={link.href}
-                        href={link.href}
-                        className={
-                            variant === "desktop"
-                                ? "text-sm uppercase tracking-widest font-medium text-gray-300 hover:text-apd-light transition-colors px-2 py-1 rounded"
-                                : "text-lg font-semibold text-white hover:text-apd-primary transition"
-                        }
-                        onClick={variant === "mobile" ? closeMobile : undefined}
-                    >
-                        {link.label}
-                    </Link>
-                ))}
-            </>
-        );
-    }
+    // Las páginas con portada oscura propia empiezan transparentes
+    const hasDarkHero = pathname === "/" || pathname === "/servicios";
+    const solid = isScrolled || mobileOpen || !hasDarkHero;
 
     return (
-        <motion.nav
-            initial={{ y: -80 }}
-            animate={{ y: 0 }}
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-                ? "bg-apd-dark/95 backdrop-blur-sm border-b border-apd-accent/30 py-3 shadow-lg"
-                : "bg-apd-dark py-4"
+        <nav
+            className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${solid
+                ? "border-b border-white/10 bg-apd-ink/85 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.25)] backdrop-blur-xl"
+                : "border-b border-transparent bg-transparent py-5"
                 }`}
         >
-            <div className="container mx-auto px-6 flex justify-between items-center">
-
-                <Link
-                    href="/"
-                    className="flex items-center gap-3"
-                    onClick={closeMobile}
-                >
-                    <div className="w-9 h-9 rounded-full overflow-hidden border border-white/20">
-                        <Image
-                            src="/apd.png"
-                            alt="A.P.D. Software Solutions"
-                            width={36}
-                            height={36}
-                            className="object-cover"
-                            priority
-                        />
-                    </div>
-                    <span className="text-lg md:text-xl font-bold tracking-tight text-apd-bglogo">
-                        A.P.D. Software Solutions
+            <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-5 sm:px-8">
+                <Link href="/" className="flex items-center gap-3" onClick={closeMobile}>
+                    <span className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-full bg-white ring-1 ring-white/20">
+                        <Image src="/apd.png" alt="" width={36} height={36} className="object-cover" priority />
+                    </span>
+                    <span className="font-display text-base font-bold tracking-tight text-white sm:text-lg">
+                        A.P.D. <span className="font-semibold text-apd-mist">Software Solutions</span>
                     </span>
                 </Link>
 
-                {/* Desktop Menu */}
-                <div className="hidden md:flex items-center gap-6">
-                    <NavLinks variant="desktop" />
+                <div className="hidden items-center gap-1 lg:flex">
+                    {links.map((link) => (
+                        <Link
+                            key={link.href}
+                            href={link.href}
+                            className="rounded-full px-4 py-2 text-sm font-medium text-apd-mist transition-colors hover:bg-white/5 hover:text-white"
+                        >
+                            {link.label}
+                        </Link>
+                    ))}
+                </div>
 
+                <div className="hidden lg:block">
                     <Link
                         href="/#contacto"
-                        className="text-sm font-semibold px-4 py-2 rounded-md bg-apd-accent text-apd-bglogo hover:bg-apd-dark2"
+                        className="group inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-apd-dark transition hover:bg-apd-sky"
                     >
-                        Cotizar
+                        Cotizar proyecto
+                        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                     </Link>
                 </div>
 
-                {/* Mobile Toggle */}
-                <div className="flex items-center gap-2 md:hidden">
-                    <button
-                        ref={menuBtnRef}
-                        className="text-apd-bglogo p-2"
-                        aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
-                        aria-expanded={mobileOpen}
-                        onClick={() => setMobileOpen((v) => !v)}
-                    >
-                        ☰
-                    </button>
-                </div>
+                <button
+                    ref={menuBtnRef}
+                    className="rounded-full p-2 text-white hover:bg-white/10 lg:hidden"
+                    aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
+                    aria-expanded={mobileOpen}
+                    onClick={() => setMobileOpen((v) => !v)}
+                >
+                    {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                </button>
             </div>
 
             <AnimatePresence>
                 {mobileOpen && (
                     <motion.div
-                        className="md:hidden fixed inset-0 z-40"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
+                        className="lg:hidden"
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
                     >
-                        <button
-                            className="absolute inset-0 bg-black/40"
-                            onClick={closeMobile}
-                        />
-
-                        <motion.div
-                            className="absolute inset-x-0 top-[64px] bg-apd-dark2 border-t border-apd-accent/20"
-                            initial={{ y: -10 }}
-                            animate={{ y: 0 }}
-                            exit={{ y: -10 }}
-                        >
-                            <div className="flex flex-col items-center py-8 gap-6">
-                                <NavLinks variant="mobile" />
-
+                        <div className="mx-auto flex max-w-7xl flex-col gap-1 px-5 pb-6 pt-4 sm:px-8">
+                            {links.map((link) => (
                                 <Link
-                                    href="/#contacto"
-                                    className="px-6 py-2 rounded-md bg-apd-accent text-apd-bglogo font-semibold"
+                                    key={link.href}
+                                    href={link.href}
                                     onClick={closeMobile}
+                                    className="rounded-xl px-4 py-3 text-lg font-medium text-white hover:bg-white/5"
                                 >
-                                    Cotizar
+                                    {link.label}
                                 </Link>
-                            </div>
-                        </motion.div>
+                            ))}
+                            <Link
+                                href="/#contacto"
+                                onClick={closeMobile}
+                                className="mt-3 inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 font-semibold text-apd-dark"
+                            >
+                                Cotizar proyecto <ArrowRight className="h-4 w-4" />
+                            </Link>
+                        </div>
                     </motion.div>
                 )}
             </AnimatePresence>
-        </motion.nav>
+        </nav>
     );
 }

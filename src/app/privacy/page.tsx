@@ -1,17 +1,13 @@
-"use client"
-
-import { useLocale } from "../../context/LocaleContext";
-
 export default function PrivacyPage() {
 
     return (
-        <main className="bg-[#ffffff] min-h-screen py-24">
+        <div className="bg-white min-h-screen pt-36 pb-24">
             <div className="max-w-4xl mx-auto px-6">
                 <p className="text-sm uppercase tracking-widest text-gray-500 mb-3">
                     Información legal
                 </p>
 
-                <h1 className="text-6xl md:text-7xl font-extrabold text-[#04233B] tracking-tight mb-13">
+                <h1 className="text-6xl md:text-7xl font-extrabold text-[#04233B] tracking-tight mb-12 font-display">
                     Política de Privacidad
                 </h1>
 
@@ -112,6 +108,6 @@ export default function PrivacyPage() {
 
                 </section>
             </div>
-        </main>
+        </div>
     )
 }

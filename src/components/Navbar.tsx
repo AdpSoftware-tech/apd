@@ -11,6 +11,7 @@ const links = [
     { href: "/#servicios", label: "Servicios" },
     { href: "/#casos", label: "Casos de éxito" },
     { href: "/#proceso", label: "Proceso" },
+    { href: "/pasantias", label: "Pasantías" },
     { href: "/#contacto", label: "Contacto" },
 ];
 
@@ -62,7 +63,7 @@ export default function Navbar() {
     }, [mobileOpen]);
 
     // Las páginas con portada oscura propia empiezan transparentes
-    const hasDarkHero = pathname === "/" || pathname === "/servicios";
+    const hasDarkHero = pathname === "/" || pathname === "/servicios" || pathname === "/pasantias";
     const solid = isScrolled || mobileOpen || !hasDarkHero;
 
     return (

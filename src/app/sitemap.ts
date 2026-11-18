@@ -11,6 +11,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
             lastModified: new Date(),
         },
         {
+            url: "https://apdsoftwaresolutions.com/pasantias",
+            lastModified: new Date(),
+        },
+        {
             url: "https://apdsoftwaresolutions.com/privacy",
             lastModified: new Date(),
         },

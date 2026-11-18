@@ -6,6 +6,7 @@ import CasesOfSuccess from "@/components/CasesOfSuccess"
 import Methodology from "@/components/Methodology"
 import TechStack from "@/components/TechStack"
 import ContactForm from "@/components/ContactForm"
+import InternshipsTeaser from "@/components/internships/InternshipsTeaser"
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <ServicesSection />
       <CasesOfSuccess />
       <Methodology />
+      <InternshipsTeaser />
       <TechStack />
       <ContactForm />
     </>

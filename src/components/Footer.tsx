@@ -14,6 +14,7 @@ const navLinks = [
     { name: "Servicios", href: "/#servicios" },
     { name: "Casos de éxito", href: "/#casos" },
     { name: "Proceso", href: "/#proceso" },
+    { name: "Pasantías", href: "/pasantias" },
     { name: "Contacto", href: "/#contacto" },
 ]
 
